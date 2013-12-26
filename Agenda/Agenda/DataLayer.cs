@@ -10,6 +10,9 @@ using CrossCutting;
 
 namespace DataLayer
 {
+
+    
+
     class ManageUsers
     {
         public static void insert(string username,string password)

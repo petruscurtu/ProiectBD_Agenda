@@ -27,6 +27,8 @@ namespace Agenda
             {
                 //var user = new Users { UserId = 1, Username = "Scurtu", Password = "Petru" };
                 //db.Users.Add(user);
+                //db.SaveChanges();
+                //IO_on_Db.write_users_table();
                 //user = new Users { UserId = 2, Username = "Iordache", Password = "George" };
                 //db.Users.Add(user);
                 //db.SaveChanges();
@@ -34,7 +36,7 @@ namespace Agenda
                 //            select u;
                 //foreach (var item in query)
                 //{
-                //    MessageBox.Show(item.Username + item.Password,"info",MessageBoxButtons.OK);
+                //    MessageBox.Show(item.Username + item.Password, "info", MessageBoxButtons.OK);
                 //}
                 IEnumerable<int> id = (from u in db.Users
                                         select u.UserId);
@@ -42,7 +44,12 @@ namespace Agenda
                 if (id.Count() != 0)
                     max = id.Max();
                 else
+                {
                     max = 0;
+                    DatabaseManagement.set_next_agenda_id(max);
+                    IO_on_Db.read_users_table();
+                    
+                }
                 //MessageBox.Show(max.ToString());
                 DatabaseManagement.set_next_user_id(max);
                 id = (from u in db.Agenda

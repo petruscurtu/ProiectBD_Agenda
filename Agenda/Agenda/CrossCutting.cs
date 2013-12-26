@@ -8,10 +8,102 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.IO;
+using System.Text;
+
 using DatabaseCreate;
+using BusinessLayer;
 
 namespace CrossCutting
 {
+
+    public class IO_on_Db
+    {
+        public static void write_users_table()      //apelat de cate ori se face o modificare asupra tabelei de useri
+        {
+            try
+            {
+                using (var db = new AgendaDBContext())
+                {
+                    //creez un tabel in care scriu datele din tabelul de useri!
+
+                    DataTable dt = new DataTable("useri");
+                    DataColumn cUserID = new DataColumn("UserId");
+                    cUserID.DataType = typeof(int);
+                    dt.Columns.Add(cUserID);
+                    DataColumn cUsername = new DataColumn("Username");
+                    cUsername.DataType = typeof(string);
+                    dt.Columns.Add(cUsername);
+                    DataColumn cPassword = new DataColumn("Password");
+                    cPassword.DataType = typeof(string);
+                    dt.Columns.Add(cPassword);
+
+                    //adaug randurile din tabelul de useri
+                   
+                    var query = from u in db.Users
+                                select u;
+                    foreach (var user in query)
+                    {
+                        dt.Rows.Add(user.UserId, user.Username, user.Password);
+                    }
+
+                    //scriu tabelul intr-un fisier .xml
+                    dt.WriteXml("users.xml");
+
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Eroare la scriere xml useri", MessageBoxButtons.OK);
+            }
+        }
+
+        public static void read_users_table()       //apelat cand se initializeaza aplicatia iar lista de useri este GOALA (sau de fiecare data cand se deschide aplicatia... trebuie hotarat
+        {
+
+            try
+            {
+                using (var db = new AgendaDBContext())
+                {
+                    //creez un tabel in care citesc datele din tabelul de useri!
+
+                    DataTable dt = new DataTable("useri");
+                    DataColumn cUserID = new DataColumn("UserId");
+                    cUserID.DataType = typeof(int);
+                    dt.Columns.Add(cUserID);
+                    DataColumn cUsername = new DataColumn("Username");
+                    cUsername.DataType = typeof(string);
+                    dt.Columns.Add(cUsername);
+                    DataColumn cPassword = new DataColumn("Password");
+                    cPassword.DataType = typeof(string);
+                    dt.Columns.Add(cPassword);
+
+                    //citesc tabelul intr-un fisier .xml
+                    dt.ReadXml("users.xml");
+
+                    //adaug randurile din tabelul de useri
+
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        var user = new Users { UserId = Convert.ToInt32(dt.Rows[i][0]), Username = Convert.ToString(dt.Rows[i][1]), Password = Convert.ToString(dt.Rows[i][2]) };
+                        db.Users.Add(user);
+                        
+                    }
+                    db.SaveChanges();
+                    
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Eroare la scriere xml useri", MessageBoxButtons.OK);
+            }
+
+        }
+    }
+
     public class Login
     {
         public static bool verify(string username, string password)
@@ -24,7 +116,7 @@ namespace CrossCutting
                                 select u;
                     foreach (var user in query)
                     {
-                        if (user.Username == username && user.Password == password)
+                        if (user.Username == username && user.Password == ManageUsers.criptare_pass(password))
                             return true;
                     }
                     return false;

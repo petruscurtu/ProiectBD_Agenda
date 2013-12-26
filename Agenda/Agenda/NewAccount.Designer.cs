@@ -90,6 +90,7 @@
             this.PasswdBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.PasswdBox1.Location = new System.Drawing.Point(141, 88);
             this.PasswdBox1.Name = "PasswdBox1";
+            this.PasswdBox1.PasswordChar = '*';
             this.PasswdBox1.Size = new System.Drawing.Size(100, 23);
             this.PasswdBox1.TabIndex = 5;
             // 
@@ -98,6 +99,7 @@
             this.PasswdBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.PasswdBox2.Location = new System.Drawing.Point(141, 134);
             this.PasswdBox2.Name = "PasswdBox2";
+            this.PasswdBox2.PasswordChar = '*';
             this.PasswdBox2.Size = new System.Drawing.Size(100, 23);
             this.PasswdBox2.TabIndex = 6;
             // 

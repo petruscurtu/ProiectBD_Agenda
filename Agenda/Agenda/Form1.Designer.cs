@@ -67,8 +67,10 @@
             // PasswordBox
             // 
             this.PasswordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.PasswordBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.PasswordBox.Location = new System.Drawing.Point(142, 100);
             this.PasswordBox.Name = "PasswordBox";
+            this.PasswordBox.PasswordChar = '*';
             this.PasswordBox.Size = new System.Drawing.Size(100, 23);
             this.PasswordBox.TabIndex = 3;
             // 
