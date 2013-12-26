@@ -12,6 +12,33 @@ using DataLayer;
 
 namespace BusinessLayer
 {
+    class ManageAgenda
+    {
+        static int userid_logat;
+        public static DataTable intrari_agenda;
+
+        public static void set_userid(int id)
+        {
+            userid_logat = id;
+        }
+
+        public static int get_userid()
+        {
+            return userid_logat;
+        }
+
+        public static void get_datatable()
+        {
+            intrari_agenda = ManagerAgenda.get_agenda_for_uid(userid_logat);
+        }
+
+        public static void add_inregistrare(string data,string ora,string minut,string titlu,string detalii)
+        {
+
+            ManagerAgenda.insert(userid_logat, data + " " + ora + ":" + minut, titlu, detalii);
+        }
+    }
+
     class ManageUsers
     {
         public static bool insert(string username, string passwd1, string passwd2)

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using DatabaseCreate;
 using CrossCutting;
+using BusinessLayer;
 
 namespace Agenda
 {
@@ -69,7 +70,18 @@ namespace Agenda
             string passwd = PasswordBox.Text;
             bool x = Login.verify(username, passwd);
             if (x)
-                MessageBox.Show("Succes ");
+            {
+                //MessageBox.Show("Succes ");
+                ManageAgenda.get_datatable();
+                this.Visible = false;
+                agenda a = new agenda();
+                a.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Numele sau parola sunt gresite.\nReincercati");
+            }
         }
 
         private void NewButton_Click(object sender, EventArgs e)

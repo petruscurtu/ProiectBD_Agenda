@@ -32,16 +32,17 @@ namespace DatabaseCreate
     {
         public Agenda()
         {
-          
+            //Users = new Users();
         }
 
         [System.ComponentModel.DataAnnotations.Schema.ForeignKey("Users")]
         public int UserId { get; set; }
+        
         [Required]
-        public DateTime ora { get; set; }
-        [Required]
-        public DateTime data { get; set; }
+        public DateTime data_si_ora { get; set; }
         public string notita { get; set; }
+        [Required]
+        public string titlu { get; set; }
 
         [Key]
         public int Id { get; set; }

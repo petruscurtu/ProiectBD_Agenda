@@ -16,7 +16,7 @@ using BusinessLayer;
 
 namespace CrossCutting
 {
-
+    //NEFOLOSIT!
     public class IO_on_Db
     {
         public static void write_users_table()      //apelat de cate ori se face o modificare asupra tabelei de useri
@@ -117,7 +117,10 @@ namespace CrossCutting
                     foreach (var user in query)
                     {
                         if (user.Username == username && user.Password == ManageUsers.criptare_pass(password))
+                        {
+                            ManageAgenda.set_userid(user.UserId);
                             return true;
+                        }
                     }
                     return false;
                 }
