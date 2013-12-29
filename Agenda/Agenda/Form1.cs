@@ -72,7 +72,7 @@ namespace Agenda
             if (x)
             {
                 //MessageBox.Show("Succes ");
-                ManageAgenda.get_datatable();
+                //ManageAgenda.get_datatable();
                 this.Visible = false;
                 agenda a = new agenda();
                 a.ShowDialog();

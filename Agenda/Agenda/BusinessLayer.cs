@@ -16,6 +16,7 @@ namespace BusinessLayer
     {
         static int userid_logat;
         public static DataTable intrari_agenda;
+        public static DataView intrari_zilnice;
 
         public static void set_userid(int id)
         {
@@ -27,9 +28,15 @@ namespace BusinessLayer
             return userid_logat;
         }
 
+        public static void set_rowfilter(string s)
+        {
+            intrari_zilnice.RowFilter = String.Format("Data = '{0}'", s);
+        }
+
         public static void get_datatable()
         {
             intrari_agenda = ManagerAgenda.get_agenda_for_uid(userid_logat);
+            intrari_zilnice = new DataView(intrari_agenda);
         }
 
         public static void add_inregistrare(string data,string ora,string minut,string titlu,string detalii)

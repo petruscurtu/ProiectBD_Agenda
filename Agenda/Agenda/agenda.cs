@@ -67,6 +67,8 @@ namespace Agenda
                 minute[i] += Convert.ToString(i);
             }
             cb_minute.DataSource = minute;
+
+            ManageAgenda.get_datatable();
         }
 
         private void set_default_values()
@@ -98,18 +100,10 @@ namespace Agenda
         }
 
         private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e)
-        {
-            ManageAgenda.get_datatable(); //pun in membru static datatable agenda pt userul curent
-            DataTable dt = ManageAgenda.intrari_agenda.Copy();
-            DataView dv = new DataView(dt);
-            dv.RowFilter = String.Format("Data = '{0}'", e.Start.ToShortDateString());
-            if (dv.Count == 0)
-            {
-                string mesaj = String.Format("Nu exista inregistrati pentru {0}", e.Start.ToShortDateString());
-                MessageBox.Show(mesaj, "Info", MessageBoxButtons.OK);
-                dv = null;
-            }
-            dataGridView.DataSource = dv;
+        {            
+            ManageAgenda.set_rowfilter(e.Start.ToShortDateString());
+                        
+            dataGridView.DataSource = ManageAgenda.intrari_zilnice;
         }
     }
 }
