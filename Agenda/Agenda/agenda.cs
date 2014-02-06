@@ -105,5 +105,12 @@ namespace Agenda
                         
             dataGridView.DataSource = ManageAgenda.intrari_zilnice;
         }
+
+        private void btn_sterge_inreg_Click(object sender, EventArgs e)
+        {
+            int index = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+            ManageAgenda.del_inregistrare(index);
+            restart_window();
+        }
     }
 }

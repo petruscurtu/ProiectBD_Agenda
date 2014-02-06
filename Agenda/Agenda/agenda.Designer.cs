@@ -175,6 +175,7 @@
             this.btn_sterge_inreg.TabIndex = 14;
             this.btn_sterge_inreg.Text = "Sterge Inregistrare";
             this.btn_sterge_inreg.UseVisualStyleBackColor = true;
+            this.btn_sterge_inreg.Click += new System.EventHandler(this.btn_sterge_inreg_Click);
             // 
             // menuStrip1
             // 

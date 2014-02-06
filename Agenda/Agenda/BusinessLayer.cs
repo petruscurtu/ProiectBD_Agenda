@@ -44,6 +44,11 @@ namespace BusinessLayer
 
             ManagerAgenda.insert(userid_logat, data + " " + ora + ":" + minut, titlu, detalii);
         }
+
+        public static void del_inregistrare(int ind)
+        {
+            ManagerAgenda.delete(ind);
+        }
     }
 
     class ManageUsers

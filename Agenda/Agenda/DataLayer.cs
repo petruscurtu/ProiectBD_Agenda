@@ -63,6 +63,35 @@ namespace DataLayer
             }
         }
 
+        public static void delete(int ind)
+        {
+            try
+            {
+                using (var db = new AgendaDBContext())
+                {
+                    var x=(from n in db.Agenda where n.Id==ind select n).FirstOrDefault();
+                    db.Agenda.Remove(x);
+                    db.SaveChanges();
+                    MessageBox.Show("Intrarea a fost stearsa cu succes!");
+                }
+            }
+            catch (DbEntityValidationException e)
+            {
+                string err = "";
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    err += "Entity of type " + Convert.ToString(eve.Entry.Entity.GetType().Name) + " in state " + Convert.ToString(eve.Entry.State) + " has the following validation errors:\n\n";
+
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        err += "- Property: " + Convert.ToString(ve.PropertyName) + ", Error: " + Convert.ToString(ve.ErrorMessage) + "\n";
+
+                    }
+                }
+                MessageBox.Show(err);
+            }
+        }
+
         public static DataTable get_agenda_for_uid(int uid)
         {
             try
