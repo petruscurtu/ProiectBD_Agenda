@@ -73,6 +73,26 @@ namespace BusinessLayer
         {
             ManagerAgenda.delete(ind);
         }
+
+        public static string get_titlu(int ind)
+        {
+            for (int i = 0; i < intrari_agenda.Rows.Count; i++)
+            {
+                if (Convert.ToInt32(intrari_agenda.Rows[i].ItemArray[0]) == ind)
+                    return intrari_agenda.Rows[i].ItemArray[3].ToString();
+            }
+            return null;
+        }
+
+        public static string get_detalii(int ind)
+        {
+            for (int i = 0; i < intrari_agenda.Rows.Count; i++)
+            {
+                if (Convert.ToInt32(intrari_agenda.Rows[i].ItemArray[0]) == ind)
+                    return intrari_agenda.Rows[i].ItemArray[4].ToString();
+            }
+            return null;
+        }
     }
 
     

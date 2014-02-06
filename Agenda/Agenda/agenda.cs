@@ -19,10 +19,13 @@ namespace Agenda
         string[] minute;
         public agenda()
         {
+            
             InitializeComponent();
             initializare_proprie();
             set_default_values();
             show_calendar_entries();
+            button1.Hide();
+            button2.Hide();
         }
 
         private void show_calendar_entries()
@@ -125,6 +128,36 @@ namespace Agenda
                 restart_window();
             }
             else MessageBox.Show("Nu ati selectat nici o intrare.");
+        }
+
+        private void btn_modif_inreg_Click(object sender, EventArgs e)
+        {
+            Int32 selectedRowCount = dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedRowCount == 1)
+            {
+                button1.Show();
+                button2.Show();
+                int index = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                //copiez in tb_titlu titlul
+                tb_titlu.Text = ManageAgenda.get_titlu(index);
+                tb_detalii.Text = ManageAgenda.get_detalii(index);
+                //copiez in tb_detalii detaliile
+            }
+            else MessageBox.Show("Nu ati selectat nici o intrare.");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //salveaza modificarea
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //anuleaza modificarea
+            button1.Hide();
+            button2.Hide();
+            tb_titlu.Text = "";
+            tb_detalii.Text = "";
         }
 
        

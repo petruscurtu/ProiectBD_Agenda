@@ -47,6 +47,8 @@
             this.despreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iesireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -164,8 +166,9 @@
             this.btn_modif_inreg.Name = "btn_modif_inreg";
             this.btn_modif_inreg.Size = new System.Drawing.Size(120, 23);
             this.btn_modif_inreg.TabIndex = 13;
-            this.btn_modif_inreg.Text = "Modifica Inregisrare";
+            this.btn_modif_inreg.Text = "Modifica Inregistrare";
             this.btn_modif_inreg.UseVisualStyleBackColor = true;
+            this.btn_modif_inreg.Click += new System.EventHandler(this.btn_modif_inreg_Click);
             // 
             // btn_sterge_inreg
             // 
@@ -226,11 +229,33 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Intrari in agenda:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(756, 343);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(120, 23);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Salveaza Modificare";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(756, 386);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(120, 23);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "Anuleaza Modificare";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // agenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 462);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_sterge_inreg);
             this.Controls.Add(this.btn_modif_inreg);
@@ -279,5 +304,7 @@
         private System.Windows.Forms.ToolStripMenuItem despreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iesireToolStripMenuItem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
