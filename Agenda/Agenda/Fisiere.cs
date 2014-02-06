@@ -18,11 +18,13 @@ namespace Agenda
         public Fisiere()
         {
             InitializeComponent();
+            ManageFisiere.get_dvs();
             show_gridviewData();
         }
 
         private void show_gridviewData()
         {
+            
             dataGridView.DataSource = ManageFisiere.dv_fisiere_proprii;
         }
 
