@@ -108,9 +108,14 @@ namespace Agenda
 
         private void btn_sterge_inreg_Click(object sender, EventArgs e)
         {
-            int index = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
-            ManageAgenda.del_inregistrare(index);
-            restart_window();
+            Int32 selectedRowCount = dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedRowCount == 1)
+            {
+                int index = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                ManageAgenda.del_inregistrare(index);
+                restart_window();
+            }
+            else MessageBox.Show("Nu ati selectat nici o intrare.");
         }
     }
 }
