@@ -62,7 +62,43 @@ namespace DataLayer
 
         public static DataTable get_fisiere_ext(int uid)
         {
-            return null;
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Columns.Add().ColumnName ="Nume_Fisier";
+                dt.Columns.Add().ColumnName ="Owner";
+                dt.Columns.Add().ColumnName ="Data_si_Ora";
+                dt.Columns.Add().ColumnName = "File_Id";
+                dt.Columns.Add().ColumnName = "Nume_Criptat";
+                using (var db = new AgendaDBContext())
+                {
+                    var query = from f in db.Fisiere
+                                join u in db.Users on f.UserId equals u.UserId
+                                select new { f.NumeReal, f.NumeCriptat, f.FisierId, f.ShareList, u.Username ,f.data_si_ora };
+                    foreach (var intrare in query)
+                    {
+                        if (intrare.ShareList.Contains('#'))
+                        {
+                            string[] shared = intrare.ShareList.Split('#');
+                            foreach(var x in shared)
+                                if (Convert.ToInt32(x) == uid)
+                                {
+                                    dt.Rows.Add(intrare.FisierId, intrare.NumeReal, intrare.NumeCriptat, intrare.Username, intrare.data_si_ora);
+                                    break;
+                                }
+                        }
+                        else
+                          if(Convert.ToInt32(intrare.ShareList)==uid)
+                              dt.Rows.Add(intrare.FisierId, intrare.NumeReal, intrare.NumeCriptat, intrare.Username, intrare.data_si_ora);
+                    }
+                    return dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Eroare", MessageBoxButtons.OK);
+                return null;
+            }
         }
     }
 

@@ -28,7 +28,9 @@ namespace BusinessLayer
             dv_fisiere_proprii = new DataView(table2);
 
             t_fis_externe = ManagerFisiere.get_fisiere_ext(ManageAgenda.get_userid());
-            dv_fisiere_externe = new DataView(t_fis_externe);
+            view = new DataView(t_fis_externe);
+            DataTable table3 = view.ToTable("shared", false, "Nume_Fisier", "Owner", "Data_si_Ora");
+            dv_fisiere_externe = new DataView(table3);
 
 
         }
