@@ -83,7 +83,7 @@ namespace DataLayer
                             foreach(var x in shared)
                                 if (Convert.ToInt32(x) == uid)
                                 {
-                                    dt.Rows.Add(intrare.FisierId, intrare.NumeReal, intrare.NumeCriptat, intrare.Username, intrare.data_si_ora);
+                                    dt.Rows.Add(intrare.NumeReal, intrare.Username, intrare.data_si_ora, intrare.FisierId,intrare.NumeCriptat);
                                     break;
                                 }
                         }
@@ -91,7 +91,7 @@ namespace DataLayer
                         {
                             if (String.Compare(intrare.ShareList, "") == 0) continue;
                             if (Convert.ToInt32(intrare.ShareList) == uid)
-                                dt.Rows.Add(intrare.FisierId, intrare.NumeReal, intrare.NumeCriptat, intrare.Username, intrare.data_si_ora);
+                                dt.Rows.Add(intrare.NumeReal, intrare.Username, intrare.data_si_ora, intrare.FisierId, intrare.NumeCriptat);
                         }
                     }
                     return dt;
