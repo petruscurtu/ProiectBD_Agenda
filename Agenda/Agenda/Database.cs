@@ -69,6 +69,7 @@ namespace DatabaseCreate
         public String NumeCriptat { get; set; }
         public bool Open { get; set; }
         public String ShareList { get; set; }
+        public DateTime data_si_ora { get; set; }
 
         [Required]
         public virtual Users Users { get; set; }
