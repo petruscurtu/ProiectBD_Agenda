@@ -152,6 +152,7 @@ namespace CrossCutting
     {
         static int next_user_id;
         static int next_agenda_id;
+        static int next_fisier_id;
 
         public static  void set_next_user_id(int max_userid)
         {
@@ -161,6 +162,11 @@ namespace CrossCutting
         public static void set_next_agenda_id(int max_agendaid)
         {
             next_agenda_id = max_agendaid + 1;
+        }
+
+        public static void set_next_fisier_id(int max_fisierid)
+        {
+            next_fisier_id = max_fisierid + 1;
         }
 
         public static void increment_next_user_id()
@@ -173,6 +179,11 @@ namespace CrossCutting
             next_agenda_id++;
         }
 
+        public static void increment_next_fisier_id()
+        {
+            next_fisier_id++;
+        }
+
         public static int get_next_user_id()
         {
             return next_user_id;
@@ -181,6 +192,11 @@ namespace CrossCutting
         public static int get_next_agenda_id()
         {
             return next_agenda_id;
+        }
+
+        public static int get_next_fisier_id()
+        {
+            return next_fisier_id;
         }
     }
 }

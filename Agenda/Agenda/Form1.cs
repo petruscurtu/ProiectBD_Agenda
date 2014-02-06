@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 
 using DatabaseCreate;
 using CrossCutting;
@@ -61,6 +63,13 @@ namespace Agenda
                     max = 0;
                 //MessageBox.Show(max.ToString());
                 DatabaseManagement.set_next_agenda_id(max);
+
+                id = from u in db.Fisiere select u.FisierId;
+                if (id.Count() != 0)
+                    max = id.Max();
+                else
+                    max = 0;
+                DatabaseManagement.set_next_fisier_id(max);
             }
         }
 
