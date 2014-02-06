@@ -37,13 +37,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.upload = new System.Windows.Forms.Button();
+            this.download = new System.Windows.Forms.Button();
+            this.delete = new System.Windows.Forms.Button();
+            this.share = new System.Windows.Forms.Button();
+            this.download_extern = new System.Windows.Forms.Button();
+            this.upl_revision = new System.Windows.Forms.Button();
+            this.rem_access = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -140,81 +141,87 @@
             this.label2.TabIndex = 20;
             this.label2.Text = "Fisiere la care primit access:";
             // 
-            // button1
+            // upload
             // 
-            this.button1.Location = new System.Drawing.Point(12, 54);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Upload";
-            this.button1.UseVisualStyleBackColor = true;
+            this.upload.Location = new System.Drawing.Point(12, 54);
+            this.upload.Name = "upload";
+            this.upload.Size = new System.Drawing.Size(75, 23);
+            this.upload.TabIndex = 21;
+            this.upload.Text = "Upload";
+            this.upload.UseVisualStyleBackColor = true;
+            this.upload.Click += new System.EventHandler(this.upload_Click);
             // 
-            // button2
+            // download
             // 
-            this.button2.Location = new System.Drawing.Point(111, 54);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 22;
-            this.button2.Text = "Download";
-            this.button2.UseVisualStyleBackColor = true;
+            this.download.Location = new System.Drawing.Point(111, 54);
+            this.download.Name = "download";
+            this.download.Size = new System.Drawing.Size(75, 23);
+            this.download.TabIndex = 22;
+            this.download.Text = "Download";
+            this.download.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // delete
             // 
-            this.button3.Location = new System.Drawing.Point(220, 54);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 23;
-            this.button3.Text = "Delete";
-            this.button3.UseVisualStyleBackColor = true;
+            this.delete.Location = new System.Drawing.Point(220, 54);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(75, 23);
+            this.delete.TabIndex = 23;
+            this.delete.Text = "Delete";
+            this.delete.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // share
             // 
-            this.button4.Location = new System.Drawing.Point(326, 54);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 24;
-            this.button4.Text = "Share";
-            this.button4.UseVisualStyleBackColor = true;
+            this.share.Location = new System.Drawing.Point(326, 54);
+            this.share.Name = "share";
+            this.share.Size = new System.Drawing.Size(75, 23);
+            this.share.TabIndex = 24;
+            this.share.Text = "Share";
+            this.share.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // download_extern
             // 
-            this.button5.Location = new System.Drawing.Point(490, 54);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 25;
-            this.button5.Text = "Export";
-            this.button5.UseVisualStyleBackColor = true;
+            this.download_extern.Location = new System.Drawing.Point(490, 54);
+            this.download_extern.Name = "download_extern";
+            this.download_extern.Size = new System.Drawing.Size(75, 23);
+            this.download_extern.TabIndex = 25;
+            this.download_extern.Text = "Download";
+            this.download_extern.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // upl_revision
             // 
-            this.button6.Location = new System.Drawing.Point(642, 54);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(115, 23);
-            this.button6.TabIndex = 26;
-            this.button6.Text = "Upload Revision";
-            this.button6.UseVisualStyleBackColor = true;
+            this.upl_revision.Location = new System.Drawing.Point(642, 54);
+            this.upl_revision.Name = "upl_revision";
+            this.upl_revision.Size = new System.Drawing.Size(115, 23);
+            this.upl_revision.TabIndex = 26;
+            this.upl_revision.Text = "Upload Revision";
+            this.upl_revision.UseVisualStyleBackColor = true;
+            this.upl_revision.Click += new System.EventHandler(this.upload_revision_click);
             // 
-            // button7
+            // rem_access
             // 
-            this.button7.Location = new System.Drawing.Point(809, 54);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(105, 23);
-            this.button7.TabIndex = 27;
-            this.button7.Text = "Remove Access";
-            this.button7.UseVisualStyleBackColor = true;
+            this.rem_access.Location = new System.Drawing.Point(809, 54);
+            this.rem_access.Name = "rem_access";
+            this.rem_access.Size = new System.Drawing.Size(105, 23);
+            this.rem_access.TabIndex = 27;
+            this.rem_access.Text = "Remove Access";
+            this.rem_access.UseVisualStyleBackColor = true;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Fisiere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 462);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.rem_access);
+            this.Controls.Add(this.upl_revision);
+            this.Controls.Add(this.download_extern);
+            this.Controls.Add(this.share);
+            this.Controls.Add(this.delete);
+            this.Controls.Add(this.download);
+            this.Controls.Add(this.upload);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
@@ -243,12 +250,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button upload;
+        private System.Windows.Forms.Button download;
+        private System.Windows.Forms.Button delete;
+        private System.Windows.Forms.Button share;
+        private System.Windows.Forms.Button download_extern;
+        private System.Windows.Forms.Button upl_revision;
+        private System.Windows.Forms.Button rem_access;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

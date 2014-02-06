@@ -15,6 +15,7 @@ namespace Agenda
 {
     public partial class Fisiere : Form
     {
+        string filename = "";
         public Fisiere()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace Agenda
         {
             
             dataGridView.DataSource = ManageFisiere.dv_fisiere_proprii;
+            dataGridView1.DataSource = ManageFisiere.dv_fisiere_externe;
         }
 
         private void restart_window()
@@ -58,6 +60,40 @@ namespace Agenda
         private void meniu_iesire_click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+
+        private void upload_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            DialogResult dr = ofd.ShowDialog();
+
+            if (dr == DialogResult.OK)
+            {
+                filename = ofd.FileName;
+                //apel in business layer pentru deschidere,criptare&stocare fisier
+                restart_window();
+            }
+            else filename = "";
+        }
+
+        private void upload_revision_click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            DialogResult dr = ofd.ShowDialog();
+
+            if (dr == DialogResult.OK)
+            {
+                filename = ofd.FileName;
+                //apel in business layer pentru deschidere,criptare&stocare fisier
+                restart_window();
+            }
+            else filename = "";
         }
     }
 }
