@@ -85,6 +85,10 @@
     <Compile Include="Migrations\201312262029558_data_si_ora_2.Designer.cs">
       <DependentUpon>201312262029558_data_si_ora_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201402061649575_AddFisierClass.cs" />
+    <Compile Include="Migrations\201402061649575_AddFisierClass.Designer.cs">
+      <DependentUpon>201402061649575_AddFisierClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NewAccount.cs">
       <SubType>Form</SubType>
@@ -111,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312262029558_data_si_ora_2.resx">
       <DependentUpon>201312262029558_data_si_ora_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402061649575_AddFisierClass.resx">
+      <DependentUpon>201402061649575_AddFisierClass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewAccount.resx">
       <DependentUpon>NewAccount.cs</DependentUpon>

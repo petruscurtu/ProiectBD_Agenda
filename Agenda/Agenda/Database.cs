@@ -15,6 +15,7 @@ namespace DatabaseCreate
         public Users()
         {
             Agende = new List<Agenda>();
+            Fisiere = new List<Fisier>();
         }
 
         [Key]
@@ -26,6 +27,9 @@ namespace DatabaseCreate
 
         [Required]
         public virtual ICollection<Agenda> Agende { get; set; }
+
+        [Required]
+        public virtual ICollection<Fisier> Fisiere { get; set; }
     }
 
     public class Agenda
@@ -52,6 +56,24 @@ namespace DatabaseCreate
 
     }
 
+    public class Fisier
+    {
+        [Key]
+        public int FisierId { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Schema.ForeignKey("Users")]
+        public int UserId { get; set; }
+
+        [Required]
+        public String NumeReal { get; set; }
+        public String NumeCriptat { get; set; }
+        public bool Open { get; set; }
+        public String ShareList { get; set; }
+
+        [Required]
+        public virtual Users Users { get; set; }
+    }
+
     public class AgendaDBContext : DbContext
     {
 
@@ -65,6 +87,7 @@ namespace DatabaseCreate
         }
         public DbSet<Users> Users { get; set; }
         public DbSet<Agenda> Agenda { get; set; }
+        public DbSet<Fisier> Fisiere { get; set; }
     }
 
 }
