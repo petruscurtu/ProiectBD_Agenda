@@ -80,12 +80,15 @@ namespace DataLayer
                         if (intrare.ShareList.Contains('#'))
                         {
                             string[] shared = intrare.ShareList.Split('#');
-                            foreach(var x in shared)
+                            foreach (var x in shared)
+                            {
+                                if (String.Compare(intrare.ShareList, "") == 0) continue;
                                 if (Convert.ToInt32(x) == uid)
                                 {
                                     dt.Rows.Add(intrare.NumeReal, intrare.Username, intrare.data_si_ora, intrare.FisierId,intrare.NumeCriptat);
                                     break;
                                 }
+                            }
                         }
                         else
                         {
@@ -132,6 +135,7 @@ namespace DataLayer
                 string sharelist = query4.ShareList;
                 if (sharelist.Contains(Convert.ToString(userid)))
                     return;
+                if (String.Compare(sharelist,"")!=0)
                 sharelist = sharelist + "#";
                 sharelist = sharelist + Convert.ToString(userid);
                 var us = (from u in db.Users
