@@ -88,8 +88,11 @@ namespace DataLayer
                                 }
                         }
                         else
-                          if(Convert.ToInt32(intrare.ShareList)==uid)
-                              dt.Rows.Add(intrare.FisierId, intrare.NumeReal, intrare.NumeCriptat, intrare.Username, intrare.data_si_ora);
+                        {
+                            if (String.Compare(intrare.ShareList, "") == 0) continue;
+                            if (Convert.ToInt32(intrare.ShareList) == uid)
+                                dt.Rows.Add(intrare.FisierId, intrare.NumeReal, intrare.NumeCriptat, intrare.Username, intrare.data_si_ora);
+                        }
                     }
                     return dt;
                 }
@@ -99,6 +102,31 @@ namespace DataLayer
                 MessageBox.Show(ex.Message.ToString(), "Eroare", MessageBoxButtons.OK);
                 return null;
             }
+        }
+
+        public static void insert(int uid, string data_ora, string nume_real, string nume_criptat)
+        {
+            using (var db = new AgendaDBContext())
+            {
+                // Preiau userul logat ca sa il pot adauga in clasa Agenda pentru ca...
+                var query = from u in db.Users
+                            select u;
+                Users us_logat = null;
+                foreach (var user in query)
+                {
+                    if (user.UserId == uid)
+                        us_logat = user;
+                }
+
+
+                int fid = DatabaseManagement.get_next_fisier_id();
+                DatabaseCreate.Fisier a = new DatabaseCreate.Fisier { FisierId = fid, UserId = uid, data_si_ora = Convert.ToDateTime(data_ora), NumeReal = nume_real, NumeCriptat = nume_criptat, Open = false, ShareList = "", Users = us_logat };
+                db.Fisiere.Add(a);
+                db.SaveChanges();
+                DatabaseManagement.increment_next_agenda_id();
+            }
+
+
         }
     }
 

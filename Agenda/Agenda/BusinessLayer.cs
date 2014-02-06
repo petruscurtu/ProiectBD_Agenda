@@ -10,6 +10,10 @@ using System.Data;
 
 using DataLayer;
 
+using System;
+using System.IO;
+
+
 namespace BusinessLayer
 {
     class ManageFisiere
@@ -35,7 +39,67 @@ namespace BusinessLayer
 
         }
 
-        
+
+        public static void upload_fisier(string filename)
+        {
+            string nume_criptat = criptare_fis(filename);
+            string[] words = filename.Split('\\');
+            string filename2 = words[words.Length - 1];
+            words = nume_criptat.Split('\\');
+            string nume_criptat2 = words[words.Length - 1];
+            ManagerFisiere.insert(ManageAgenda.get_userid(), DateTime.Now.ToString(), filename2, nume_criptat2);
+        }
+
+        private static string criptare_fis(string filename)
+        {
+
+            string pathNew = @".\data\aaa";
+            string data = DateTime.Now.ToString();
+            string[] words;
+            words = data.Split(' ', '.', ':');
+            foreach (string word in words)
+                pathNew = pathNew + word;
+            // pathNew=pathNew+".txt";
+
+
+            using (FileStream fsSource = new FileStream(filename,
+            FileMode.Open, FileAccess.Read))
+            {
+
+                // Read the source file into a byte array. 
+                byte[] bytes = new byte[fsSource.Length];
+                //byte r=15;
+                int numBytesToRead = (int)fsSource.Length;
+                int numBytesRead = 0;
+                while (numBytesToRead > 0)
+                {
+                    // Read may return anything from 0 to numBytesToRead. 
+                    int n = fsSource.Read(bytes, numBytesRead, numBytesToRead);
+
+                    // Break when the end of the file is reached. 
+                    if (n == 0)
+                        break;
+
+                    numBytesRead += n;
+                    numBytesToRead -= n;
+                }
+                numBytesToRead = bytes.Length;
+                for (int i = 0; i < numBytesToRead; i++) bytes[i] = (byte)(bytes[i] ^ 'r');
+
+                Directory.CreateDirectory(Path.GetDirectoryName(pathNew));
+
+                using (FileStream fsNew = new FileStream(pathNew,
+                FileMode.Create, FileAccess.Write))
+                {
+                    fsNew.Write(bytes, 0, numBytesToRead);
+                }
+
+                //MessageBox.Show("a mers criptarea??");
+
+            }
+            return pathNew;
+        }
+
     }
 
     class ManageAgenda

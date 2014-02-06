@@ -77,6 +77,7 @@ namespace Agenda
             {
                 filename = ofd.FileName;
                 //apel in business layer pentru deschidere,criptare&stocare fisier
+                ManageFisiere.upload_fisier(filename);
                 restart_window();
             }
             else filename = "";
