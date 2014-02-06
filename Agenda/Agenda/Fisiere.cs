@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using BusinessLayer;
+using CrossCutting;
+
 namespace Agenda
 {
     public partial class Fisiere : Form
