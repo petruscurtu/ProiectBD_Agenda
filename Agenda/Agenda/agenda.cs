@@ -17,6 +17,7 @@ namespace Agenda
     {
         string[] ore;
         string[] minute;
+        bool modif = true;
         public agenda()
         {
             
@@ -112,8 +113,9 @@ namespace Agenda
         }
 
         private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e)
-        {            
-            ManageAgenda.set_rowfilter(e.Start.ToShortDateString());
+        {    
+            if(modif)
+                ManageAgenda.set_rowfilter(e.Start.ToShortDateString());
                         
             dataGridView.DataSource = ManageAgenda.intrari_zilnice;
         }
@@ -138,10 +140,12 @@ namespace Agenda
                 button1.Show();
                 button2.Show();
                 int index = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
-                //copiez in tb_titlu titlul
                 tb_titlu.Text = ManageAgenda.get_titlu(index);
                 tb_detalii.Text = ManageAgenda.get_detalii(index);
-                //copiez in tb_detalii detaliile
+                modif = false;
+                btn_add_inreg.Hide();
+                btn_sterge_inreg.Hide();
+                btn_modif_inreg.Hide();
             }
             else MessageBox.Show("Nu ati selectat nici o intrare.");
         }
@@ -149,6 +153,15 @@ namespace Agenda
         private void button1_Click(object sender, EventArgs e)
         {
             //salveaza modificarea
+            int index = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+            string data = monthCalendar.SelectionRange.Start.ToShortDateString();
+            if (String.Compare("", tb_titlu.Text) == 0)
+            {
+                MessageBox.Show("Trebuie sa puneti un titlu inregistrarii!");
+                return;
+            }
+            ManageAgenda.update(index, data, cb_ora.Text, cb_minute.Text, tb_titlu.Text, tb_detalii.Text);
+            restart_window();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -158,6 +171,10 @@ namespace Agenda
             button2.Hide();
             tb_titlu.Text = "";
             tb_detalii.Text = "";
+            modif = true;
+            btn_add_inreg.Show();
+            btn_sterge_inreg.Show();
+            btn_modif_inreg.Show();
         }
 
        

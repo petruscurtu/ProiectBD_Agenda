@@ -152,6 +152,54 @@ namespace DataLayer
             }
         }
 
+        public static void updated(int uid, int index, string data_si_ora, string titlu, string detalii)
+        {
+            try
+            {
+
+
+                using (var db = new AgendaDBContext())
+                {
+                    var query = from u in db.Users
+                                select u;
+                    Users us_logat = null;
+                    foreach (var user in query)
+                    {
+                        if (user.UserId == uid)
+                            us_logat = user;
+                    }
+
+                    var intrare = (from s in db.Agenda
+                                   where s.Id == index
+                                   select s).FirstOrDefault();
+                    intrare.notita = detalii;
+                    intrare.titlu = titlu;
+                    intrare.data_si_ora = Convert.ToDateTime(data_si_ora);
+                    intrare.Users = us_logat;
+
+                    db.SaveChanges();
+                }
+
+            }
+
+            catch (DbEntityValidationException e)
+            {
+                string err = "";
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    err += "Entity of type " + Convert.ToString(eve.Entry.Entity.GetType().Name) + " in state " + Convert.ToString(eve.Entry.State) + " has the following validation errors:\n\n";
+
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        err += "- Property: " + Convert.ToString(ve.PropertyName) + ", Error: " + Convert.ToString(ve.ErrorMessage) + "\n";
+
+                    }
+                }
+                MessageBox.Show(err);
+
+            }
+        }
+
         public static void delete(int ind)
         {
             try
