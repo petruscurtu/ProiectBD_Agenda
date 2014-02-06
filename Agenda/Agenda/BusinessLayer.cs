@@ -12,6 +12,30 @@ using DataLayer;
 
 namespace BusinessLayer
 {
+    class ManageFisiere
+    {
+        public static DataView dv_fisiere_proprii;
+        public static DataView dv_fisiere_externe;
+        static DataTable t_fis_proprii;
+        static DataTable t_fis_externe;
+
+        public static void get_dvs()
+        {
+            
+            t_fis_proprii = ManagerFisiere.get_fisiere_pr(ManageAgenda.get_userid());
+            DataView view = new DataView(t_fis_proprii);
+            DataTable table2 = view.ToTable("proprii", false, "Nume_Fisier", "Data_si_Ora", "ShareList");  //view.ToTable("Nume_Fisier", "Data_si_Ora", "ShareList");
+            dv_fisiere_proprii = new DataView(table2);
+
+            t_fis_externe = ManagerFisiere.get_fisiere_ext(ManageAgenda.get_userid());
+            dv_fisiere_externe = new DataView(t_fis_externe);
+
+
+        }
+
+        
+    }
+
     class ManageAgenda
     {
         static int userid_logat;
@@ -50,6 +74,8 @@ namespace BusinessLayer
             ManagerAgenda.delete(ind);
         }
     }
+
+    
 
     class ManageUsers
     {

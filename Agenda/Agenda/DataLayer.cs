@@ -13,6 +13,59 @@ using System.Data.Entity.Validation;
 
 namespace DataLayer
 {
+    class ManagerFisiere
+    {
+        public static DataTable get_fisiere_pr(int uid)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+
+                using (var db = new AgendaDBContext())
+                {
+                    var query = (from a in db.Fisiere
+                                 where a.UserId == uid
+                                 select new { Nume_Fisier=a.NumeReal,a.data_si_ora, SharedWith=a.ShareList ,a.FisierId,a.NumeCriptat}
+                                 ).ToList();
+
+                    // Am facut conversia in tabel aici (in datalayer) pentru ca nu se poate returna o lista anonima de tipul query...
+
+                    dt.Columns.Add().ColumnName = "File_Id";
+                    dt.Columns.Add().ColumnName ="Nume_Fisier";
+                    dt.Columns.Add().ColumnName = "Data_si_Ora";
+                    
+                    dt.Columns.Add().ColumnName = "ShareList";
+                    dt.Columns.Add().ColumnName = "Nume_Criptat";
+
+                    //string ora = "";
+                    //string data = "";
+
+                    foreach (var item in query)
+                    {
+                    //    string[] words = Convert.ToString(item.data_si_ora).Split(' ');
+                    //    data = words[0];
+                    //    ora = words[1];
+                        dt.Rows.Add(item.FisierId,item.Nume_Fisier,item.data_si_ora,item.SharedWith,item.NumeCriptat);
+
+                    }
+
+
+                }
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Eroare", MessageBoxButtons.OK);
+                return null;
+            }
+        }
+
+        public static DataTable get_fisiere_ext(int uid)
+        {
+            return null;
+        }
+    }
+
 
     class ManagerAgenda
     {
