@@ -109,6 +109,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Share.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Share.Designer.cs">
+      <DependentUpon>Share.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="agenda.resx">
       <DependentUpon>agenda.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,6 +154,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Share.resx">
+      <DependentUpon>Share.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -22,6 +22,7 @@ namespace BusinessLayer
         public static DataView dv_fisiere_externe;
         static DataTable t_fis_proprii;
         static DataTable t_fis_externe;
+        static string fis_selectat;
 
         public static void get_dvs()
         {
@@ -98,6 +99,21 @@ namespace BusinessLayer
 
             }
             return pathNew;
+        }
+
+        public static void set_fis_selectat(string fisid)
+        {
+            fis_selectat = fisid;
+        }
+
+        public static string get_fis_selectat()
+        {
+            return fis_selectat;
+        }
+
+        public static void share(string username, string fis_nume)
+        {
+            ManagerFisiere.share(username, fis_nume);
         }
 
     }

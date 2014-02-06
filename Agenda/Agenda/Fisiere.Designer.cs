@@ -177,6 +177,7 @@
             this.share.TabIndex = 24;
             this.share.Text = "Share";
             this.share.UseVisualStyleBackColor = true;
+            this.share.Click += new System.EventHandler(this.share_Click);
             // 
             // download_extern
             // 

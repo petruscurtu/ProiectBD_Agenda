@@ -104,6 +104,64 @@ namespace DataLayer
             }
         }
 
+        public static void share(string username, string fis_nume)
+        {
+            using (var db = new AgendaDBContext())
+            {
+                int userid;
+                var query = (from u in db.Users
+                             where u.Username.CompareTo(username) == 0
+                             select u);
+                if (query.Count() == 0)
+                {
+                    MessageBox.Show("nu exista userul");
+                    return;
+                }
+                var query2 = (from u in db.Users
+                              where u.Username.CompareTo(username) == 0
+                              select u).First();
+                userid = query2.UserId;
+                var query3 = (from f in db.Fisiere
+                              where f.NumeReal.CompareTo(fis_nume) == 0
+                              select f).First();
+                int fis_id = query3.FisierId;
+                int uid = query3.UserId;
+                var query4 = (from f in db.Fisiere
+                              where f.FisierId == fis_id
+                              select f).First();
+                string sharelist = query4.ShareList;
+                if (sharelist.Contains(Convert.ToString(userid)))
+                    return;
+                sharelist = sharelist + "#";
+                sharelist = sharelist + Convert.ToString(userid);
+                var us = (from u in db.Users
+                          where u.UserId == uid
+                          select u).First();
+                query4.Users = us;
+                query4.ShareList = sharelist;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException e)
+                {
+                    string err = "";
+                    foreach (var eve in e.EntityValidationErrors)
+                    {
+                        err += "Entity of type " + Convert.ToString(eve.Entry.Entity.GetType().Name) + " in state " + Convert.ToString(eve.Entry.State) + " has the following validation errors:\n\n";
+
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            err += "- Property: " + Convert.ToString(ve.PropertyName) + ", Error: " + Convert.ToString(ve.ErrorMessage) + "\n";
+
+                        }
+                    }
+                    MessageBox.Show(err);
+
+                }
+            }
+        }
+
         public static void insert(int uid, string data_ora, string nume_real, string nume_criptat)
         {
             using (var db = new AgendaDBContext())
