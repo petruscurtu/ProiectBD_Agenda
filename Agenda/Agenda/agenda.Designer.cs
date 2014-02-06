@@ -202,6 +202,7 @@
             this.fisiereleMeleToolStripMenuItem.Name = "fisiereleMeleToolStripMenuItem";
             this.fisiereleMeleToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.fisiereleMeleToolStripMenuItem.Text = "Fisierele mele";
+            this.fisiereleMeleToolStripMenuItem.Click += new System.EventHandler(this.fisiereleMeleToolStripMenuItem_Click);
             // 
             // despreToolStripMenuItem
             // 

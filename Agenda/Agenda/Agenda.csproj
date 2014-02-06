@@ -63,6 +63,12 @@
     <Compile Include="CrossCutting.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DataLayer.cs" />
+    <Compile Include="Fisiere.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fisiere.Designer.cs">
+      <DependentUpon>Fisiere.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="agenda.resx">
       <DependentUpon>agenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fisiere.resx">
+      <DependentUpon>Fisiere.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

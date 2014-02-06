@@ -94,6 +94,15 @@ namespace Agenda
             
         }
 
+        private void fisiereleMeleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Fisiere a = new Fisiere();
+            a.ShowDialog();
+            this.Close();
+        }
+
+
         private void meniu_iesire_click(object sender, EventArgs e)
         {
             this.Close();
@@ -117,5 +126,7 @@ namespace Agenda
             }
             else MessageBox.Show("Nu ati selectat nici o intrare.");
         }
+
+       
     }
 }
