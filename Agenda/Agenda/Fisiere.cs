@@ -167,5 +167,17 @@ private void download_Click(object sender, EventArgs e)
              }
              else MessageBox.Show("Nu ati selectat nici o intrare.");
         }
+
+        private void rem_access_Click(object sender, EventArgs e)
+        {
+            Int32 selectedRowCount = dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedRowCount == 1)
+            {
+                string fisier = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                ManageFisiere.remove_access(fisier);
+                restart_window();
+            }
+            else MessageBox.Show("Nu ati selectat nici o intrare.");
+        }
     }
 }

@@ -191,6 +191,11 @@ namespace BusinessLayer
             ManagerFisiere.share(username, fis_nume);
         }
 
+        public static void remove_access(string fisier)
+        {
+            ManagerFisiere.remove_access(fisier);
+        }
+
     }
 
     class ManageAgenda

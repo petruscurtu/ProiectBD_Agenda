@@ -8,6 +8,7 @@ using System.Data;
 
 using DatabaseCreate;
 using CrossCutting;
+using BusinessLayer;
 
 using System.Data.Entity.Validation;
 
@@ -192,6 +193,62 @@ namespace DataLayer
             }
 
 
+        }
+
+        public static void remove_access(string fisier)
+        {
+            int user = ManageAgenda.get_userid();
+            using (var db = new AgendaDBContext())
+            {
+                var query = (from f in db.Fisiere
+                              where f.NumeReal.CompareTo(fisier) == 0
+                              select f).First();
+                int fis_id = query.FisierId;
+                int uid = query.UserId;
+                if (query.ShareList.Contains('#'))
+                {
+                    string[] sharelist = query.ShareList.Split('#');
+                    string newsharelist="";
+                    foreach (string x in sharelist)
+                        if (Convert.ToInt32(x) != user)
+                        {
+                            newsharelist += x;
+                            newsharelist+="#";
+                        }
+                    newsharelist=newsharelist.Substring(0,newsharelist.Length-1);
+                    query.ShareList = newsharelist;
+                }
+                else
+                {
+                    if (Convert.ToInt32(query.ShareList) == user)
+                        query.ShareList = "";
+                }
+                var us = (from u in db.Users
+                          where u.UserId == uid
+                          select u).First();
+                query.Users=us;
+                try
+                {
+                    db.SaveChanges();
+                }
+
+                catch (DbEntityValidationException e)
+                {
+                    string err = "";
+                    foreach (var eve in e.EntityValidationErrors)
+                    {
+                        err += "Entity of type " + Convert.ToString(eve.Entry.Entity.GetType().Name) + " in state " + Convert.ToString(eve.Entry.State) + " has the following validation errors:\n\n";
+
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            err += "- Property: " + Convert.ToString(ve.PropertyName) + ", Error: " + Convert.ToString(ve.ErrorMessage) + "\n";
+
+                        }
+                    }
+                    MessageBox.Show(err);
+
+                }
+            }
         }
 
 
