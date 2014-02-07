@@ -85,16 +85,24 @@ namespace Agenda
 
         private void upload_revision_click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            DialogResult dr = ofd.ShowDialog();
 
-            if (dr == DialogResult.OK)
-            {
-                filename = ofd.FileName;
-                //apel in business layer pentru deschidere,criptare&stocare fisier
-                restart_window();
-            }
-            else filename = "";
+            Int32 selectedRowCount = dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected);
+             if (selectedRowCount == 1)
+             {
+                        OpenFileDialog ofd = new OpenFileDialog();
+                        DialogResult dr = ofd.ShowDialog();
+
+                        if (dr == DialogResult.OK)
+                        {
+                            int index = dataGridView1.CurrentRow.Index;
+                            filename = ofd.FileName;
+                            //apel in business layer pentru deschidere,criptare&stocare fisier
+                            ManageFisiere.upload_revision(index,filename);
+                            restart_window();
+                        }
+                        else filename = "";
+             }
+             else MessageBox.Show("Nu ati selectat nici o intrare.");
         }
 
         private void share_Click(object sender, EventArgs e)
