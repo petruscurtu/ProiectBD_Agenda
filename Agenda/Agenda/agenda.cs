@@ -177,6 +177,18 @@ namespace Agenda
             btn_modif_inreg.Show();
         }
 
+        private void despreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Despre d = new Despre();
+            d.ShowDialog();
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Help h = new Help();
+            h.ShowDialog();
+        }
+
        
     }
 }

@@ -179,5 +179,17 @@ private void download_Click(object sender, EventArgs e)
             }
             else MessageBox.Show("Nu ati selectat nici o intrare.");
         }
+
+        private void despreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Despre d = new Despre();
+            d.ShowDialog();
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Help h = new Help();
+            h.ShowDialog();
+        }
     }
 }

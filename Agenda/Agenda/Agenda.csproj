@@ -64,6 +64,12 @@
     <Compile Include="CrossCutting.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DataLayer.cs" />
+    <Compile Include="Despre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Despre.Designer.cs">
+      <DependentUpon>Despre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fisiere.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help.Designer.cs">
+      <DependentUpon>Help.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201312221304120_InitialCreate.cs" />
     <Compile Include="Migrations\201312221304120_InitialCreate.Designer.cs">
@@ -118,11 +130,17 @@
     <EmbeddedResource Include="agenda.resx">
       <DependentUpon>agenda.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Despre.resx">
+      <DependentUpon>Despre.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fisiere.resx">
       <DependentUpon>Fisiere.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312221304120_InitialCreate.resx">
       <DependentUpon>201312221304120_InitialCreate.cs</DependentUpon>
