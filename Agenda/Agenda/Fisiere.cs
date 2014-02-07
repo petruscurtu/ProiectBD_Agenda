@@ -111,5 +111,47 @@ namespace Agenda
             }
             else MessageBox.Show("Nu ati selectat nici o intrare.");
         }
+
+        private void download_Click(object sender, EventArgs e)
+        {
+            Int32 selectedRowCount = dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedRowCount == 1)
+            {
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+                saveFileDialog1.RestoreDirectory = true;
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    int index = dataGridView.CurrentRow.Index;
+                    bool ok = ManageFisiere.download(index,saveFileDialog1.FileName);
+
+                    MessageBox.Show("Fisierul a fost downloadat cu succes!");
+                    //restart_window();
+                }
+            }
+            else MessageBox.Show("Nu ati selectat nici o intrare.");
+        }
+
+        private void download_extern_Click(object sender, EventArgs e)
+        {
+            Int32 selectedRowCount = dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedRowCount == 1)
+            {
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+                saveFileDialog1.RestoreDirectory = true;
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    int index = dataGridView1.CurrentRow.Index;
+                    bool ok = ManageFisiere.download_ext(index, saveFileDialog1.FileName);
+
+                    MessageBox.Show("Fisierul a fost downloadat cu succes!");
+                    //restart_window();
+                }
+            }
+            else MessageBox.Show("Nu ati selectat nici o intrare.");
+        }
     }
 }
