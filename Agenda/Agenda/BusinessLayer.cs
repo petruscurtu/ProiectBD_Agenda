@@ -228,6 +228,7 @@ namespace BusinessLayer
         static int userid_logat;
         public static DataTable intrari_agenda;
         public static DataView intrari_zilnice;
+        public static DataView intrari_zilnice2;
 
         public static void set_userid(int id)
         {
@@ -242,12 +243,18 @@ namespace BusinessLayer
         public static void set_rowfilter(string s)
         {
             intrari_zilnice.RowFilter = String.Format("Data = '{0}'", s);
+            intrari_zilnice2.RowFilter = String.Format("Data = '{0}'", s);
         }
 
         public static void get_datatable()
         {
             intrari_agenda = ManagerAgenda.get_agenda_for_uid(userid_logat);
+
+            DataView view = new DataView(intrari_agenda);
+            DataTable table2 = view.ToTable("proprii", false, "Data", "Ora","Titlu","Detalii");  //view.ToTable("Nume_Fisier", "Data_si_Ora", "ShareList");
+            //dv_fisiere_proprii = new DataView(table2);
             intrari_zilnice = new DataView(intrari_agenda);
+            intrari_zilnice2 = new DataView(table2);
         }
 
         public static void add_inregistrare(string data,string ora,string minut,string titlu,string detalii)

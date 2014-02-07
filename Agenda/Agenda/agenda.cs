@@ -117,7 +117,8 @@ namespace Agenda
             if(modif)
                 ManageAgenda.set_rowfilter(e.Start.ToShortDateString());
                         
-            dataGridView.DataSource = ManageAgenda.intrari_zilnice;
+            dataGridView.DataSource = ManageAgenda.intrari_zilnice2;
+            dataGridView1.DataSource = ManageAgenda.intrari_zilnice;
         }
 
         private void btn_sterge_inreg_Click(object sender, EventArgs e)
@@ -125,7 +126,8 @@ namespace Agenda
             Int32 selectedRowCount = dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected);
             if (selectedRowCount == 1)
             {
-                int index = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                int index2 = dataGridView.CurrentRow.Index;
+                int index = Convert.ToInt32(dataGridView1.Rows[index2].Cells[0].Value);
                 ManageAgenda.del_inregistrare(index);
                 restart_window();
             }
@@ -139,7 +141,8 @@ namespace Agenda
             {
                 button1.Show();
                 button2.Show();
-                int index = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                int index2 = dataGridView.CurrentRow.Index;
+                int index = Convert.ToInt32(dataGridView1.Rows[index2].Cells[0].Value);
                 tb_titlu.Text = ManageAgenda.get_titlu(index);
                 tb_detalii.Text = ManageAgenda.get_detalii(index);
                 modif = false;
@@ -153,7 +156,8 @@ namespace Agenda
         private void button1_Click(object sender, EventArgs e)
         {
             //salveaza modificarea
-            int index = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+            int index2 = dataGridView.CurrentRow.Index;
+            int index = Convert.ToInt32(dataGridView1.Rows[index2].Cells[0].Value);
             string data = monthCalendar.SelectionRange.Start.ToShortDateString();
             if (String.Compare("", tb_titlu.Text) == 0)
             {
