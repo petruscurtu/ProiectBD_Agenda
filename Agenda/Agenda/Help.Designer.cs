@@ -198,9 +198,9 @@
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label14.Location = new System.Drawing.Point(11, 317);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(248, 13);
+            this.label14.Size = new System.Drawing.Size(293, 13);
             this.label14.TabIndex = 25;
-            this.label14.Text = "Pentru a modifica sau sterge o intrare trebuie sa se ";
+            this.label14.Text = "Pentru a modifica sau sterge o intrare trebuie sa se selecteze";
             // 
             // label15
             // 
@@ -268,9 +268,9 @@
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label21.Location = new System.Drawing.Point(332, 105);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(288, 13);
+            this.label21.Size = new System.Drawing.Size(296, 13);
             this.label21.TabIndex = 32;
-            this.label21.Text = "la care userul curent are access. El a obtinut accesul la ele ";
+            this.label21.Text = "care au fost share-uite cu userul curent  . El a obtinut accesul";
             // 
             // label22
             // 
@@ -278,9 +278,9 @@
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label22.Location = new System.Drawing.Point(332, 132);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(255, 13);
+            this.label22.Size = new System.Drawing.Size(283, 13);
             this.label22.TabIndex = 33;
-            this.label22.Text = "dupa ce a facut share cu ownerul fisierului respectiv.";
+            this.label22.Text = "la ele dupa ce a facut share cu ownerul fisierului respectiv.";
             // 
             // label23
             // 
@@ -306,7 +306,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label25.Location = new System.Drawing.Point(333, 317);
+            this.label25.Location = new System.Drawing.Point(332, 308);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(287, 13);
             this.label25.TabIndex = 36;
@@ -318,15 +318,14 @@
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label26.Location = new System.Drawing.Point(333, 227);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(65, 13);
+            this.label26.Size = new System.Drawing.Size(0, 13);
             this.label26.TabIndex = 37;
-            this.label26.Text = "si destinatia.";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label27.Location = new System.Drawing.Point(333, 251);
+            this.label27.Location = new System.Drawing.Point(334, 239);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(273, 13);
             this.label27.TabIndex = 38;
@@ -336,7 +335,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label28.Location = new System.Drawing.Point(334, 273);
+            this.label28.Location = new System.Drawing.Point(334, 264);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(247, 13);
             this.label28.TabIndex = 39;
@@ -346,7 +345,7 @@
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label29.Location = new System.Drawing.Point(334, 295);
+            this.label29.Location = new System.Drawing.Point(332, 286);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(267, 13);
             this.label29.TabIndex = 40;
@@ -358,19 +357,19 @@
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label30.Location = new System.Drawing.Point(333, 202);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(267, 13);
+            this.label30.Size = new System.Drawing.Size(278, 13);
             this.label30.TabIndex = 41;
-            this.label30.Text = "completeaza numele userului cu care se va face share.";
+            this.label30.Text = "completeaza numele fisierului in care se va face salvarea.";
             // 
             // label31
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label31.Location = new System.Drawing.Point(332, 339);
+            this.label31.Location = new System.Drawing.Point(334, 330);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(136, 13);
+            this.label31.Size = new System.Drawing.Size(214, 13);
             this.label31.TabIndex = 42;
-            this.label31.Text = "fisierul si se apasa butonul .";
+            this.label31.Text = "fisierul si se apasa butonul Remove Access.";
             // 
             // button1
             // 
