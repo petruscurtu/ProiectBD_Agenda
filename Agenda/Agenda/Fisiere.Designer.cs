@@ -207,6 +207,7 @@
             this.rem_access.TabIndex = 27;
             this.rem_access.Text = "Remove Access";
             this.rem_access.UseVisualStyleBackColor = true;
+            this.rem_access.Click += new System.EventHandler(this.rem_access_Click);
             // 
             // openFileDialog1
             // 
