@@ -165,10 +165,12 @@ private void download_Click(object sender, EventArgs e)
          private void delete_Click(object sender, EventArgs e)
          {
              Int32 selectedRowCount = dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected);
+             
              if (selectedRowCount == 1)
              {
                  string fisier = dataGridView.SelectedRows[0].Cells[0].Value.ToString();
-                 ManageFisiere.del_fis_selectat(fisier);
+                 int index = dataGridView.CurrentRow.Index;
+                 ManageFisiere.del_fis_selectat(fisier,index);
                  //Share s = new Share();
                  //s.ShowDialog();
                  restart_window();

@@ -49,6 +49,7 @@ namespace BusinessLayer
             words = nume_criptat.Split('\\');
             string nume_criptat2 = words[words.Length - 1];
             ManagerFisiere.insert(ManageAgenda.get_userid(), DateTime.Now.ToString(), filename2, nume_criptat2);
+            //MessageBox.Show(filename);
         }
 
         public static void upload_revision(int index, string filename)
@@ -185,9 +186,19 @@ namespace BusinessLayer
             return pathNew;
         }
 
-        public static void del_fis_selectat(string fisnume)
+        public static void del_fis_selectat(string fisnume,int index)
         {
             ManagerFisiere.delete(fisnume);
+            
+            string path = "";
+            
+            DataRow dr = t_fis_proprii.Rows[index];
+            string nume = dr["Nume_Criptat"].ToString();
+            
+            path = @".\data\" + nume;
+           
+            //MessageBox.Show(path);
+            File.Delete(path);
         }
 
         public static void set_fis_selectat(string fisid)
