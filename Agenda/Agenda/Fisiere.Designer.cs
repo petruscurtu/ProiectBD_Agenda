@@ -45,6 +45,7 @@
             this.upl_revision = new System.Windows.Forms.Button();
             this.rem_access = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -159,6 +160,7 @@
             this.download.TabIndex = 22;
             this.download.Text = "Download";
             this.download.UseVisualStyleBackColor = true;
+            this.download.Click += new System.EventHandler(this.download_Click);
             // 
             // delete
             // 
@@ -188,6 +190,7 @@
             this.download_extern.TabIndex = 25;
             this.download_extern.Text = "Download";
             this.download_extern.UseVisualStyleBackColor = true;
+            this.download_extern.Click += new System.EventHandler(this.download_extern_Click);
             // 
             // upl_revision
             // 
@@ -260,5 +263,6 @@
         private System.Windows.Forms.Button upl_revision;
         private System.Windows.Forms.Button rem_access;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

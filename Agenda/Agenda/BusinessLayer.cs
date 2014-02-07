@@ -51,6 +51,76 @@ namespace BusinessLayer
             ManagerFisiere.insert(ManageAgenda.get_userid(), DateTime.Now.ToString(), filename2, nume_criptat2);
         }
 
+        public static bool download(int index,string filename)
+        {
+            DataRow dr = t_fis_proprii.Rows[index];
+
+            string cript = dr["Nume_Criptat"].ToString();
+
+            decriptare_fisier(cript, filename);
+
+            //MessageBox.Show(filename);
+
+            return true;
+        }
+
+        public static bool download_ext(int index, string filename)
+        {
+            DataRow dr = t_fis_externe.Rows[index];
+
+            string cript = dr["Nume_Criptat"].ToString();
+
+            decriptare_fisier(cript, filename);
+
+            //MessageBox.Show(filename);
+
+            return true;
+        }
+
+        private static void decriptare_fisier(string cript, string decript)
+        {
+            string pathOld = @".\data\" + cript;
+
+
+            using (FileStream fsSource = new FileStream(pathOld,
+            FileMode.Open, FileAccess.Read))
+            {
+
+                // Read the source file into a byte array. 
+                byte[] bytes = new byte[fsSource.Length];
+                //byte r=15;
+                int numBytesToRead = (int)fsSource.Length;
+                int numBytesRead = 0;
+                while (numBytesToRead > 0)
+                {
+                    // Read may return anything from 0 to numBytesToRead. 
+                    int n = fsSource.Read(bytes, numBytesRead, numBytesToRead);
+
+                    // Break when the end of the file is reached. 
+                    if (n == 0)
+                        break;
+
+                    numBytesRead += n;
+                    numBytesToRead -= n;
+                }
+                numBytesToRead = bytes.Length;
+                for (int i = 0; i < numBytesToRead; i++) bytes[i] = (byte)(bytes[i] ^ 'r');
+
+                Directory.CreateDirectory(Path.GetDirectoryName(decript));
+
+                using (FileStream fsNew = new FileStream(decript,
+                FileMode.Create, FileAccess.Write))
+                {
+                    fsNew.Write(bytes, 0, numBytesToRead);
+                }
+
+                //MessageBox.Show("a mers decriptarea??");
+
+            }
+
+
+        }
+
         private static string criptare_fis(string filename)
         {
 

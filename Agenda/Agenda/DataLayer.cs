@@ -85,7 +85,10 @@ namespace DataLayer
                                 if (String.Compare(intrare.ShareList, "") == 0) continue;
                                 if (Convert.ToInt32(x) == uid)
                                 {
-                                    dt.Rows.Add(intrare.NumeReal, intrare.Username, intrare.data_si_ora, intrare.FisierId,intrare.NumeCriptat);
+
+                                    dt.Rows.Add(intrare.NumeReal,intrare.Username,intrare.data_si_ora,intrare.FisierId,intrare.NumeCriptat);
+                                   
+
                                     break;
                                 }
                             }
