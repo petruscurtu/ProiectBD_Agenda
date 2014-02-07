@@ -101,6 +101,11 @@ namespace BusinessLayer
             return pathNew;
         }
 
+        public static void del_fis_selectat(string fisnume)
+        {
+            ManagerFisiere.delete(fisnume);
+        }
+
         public static void set_fis_selectat(string fisid)
         {
             fis_selectat = fisid;

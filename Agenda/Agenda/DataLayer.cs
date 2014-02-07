@@ -190,6 +190,36 @@ namespace DataLayer
 
 
         }
+
+
+        public static void delete(string filename)
+        {
+            try
+            {
+                using (var db = new AgendaDBContext())
+                {
+                    var x = (from n in db.Fisiere where n.NumeReal == filename select n).FirstOrDefault();
+                    db.Fisiere.Remove(x);
+                    db.SaveChanges();
+                    MessageBox.Show("Fisierul a fost sters cu succes!");
+                }
+            }
+            catch (DbEntityValidationException e)
+            {
+                string err = "";
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    err += "Entity of type " + Convert.ToString(eve.Entry.Entity.GetType().Name) + " in state " + Convert.ToString(eve.Entry.State) + " has the following validation errors:\n\n";
+
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        err += "- Property: " + Convert.ToString(ve.PropertyName) + ", Error: " + Convert.ToString(ve.ErrorMessage) + "\n";
+
+                    }
+                }
+                MessageBox.Show(err);
+            }
+        }
     }
 
 
