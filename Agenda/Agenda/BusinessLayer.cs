@@ -171,6 +171,11 @@ namespace BusinessLayer
             return pathNew;
         }
 
+        public static void del_fis_selectat(string fisnume)
+        {
+            ManagerFisiere.delete(fisnume);
+        }
+
         public static void set_fis_selectat(string fisid)
         {
             fis_selectat = fisid;
@@ -184,6 +189,11 @@ namespace BusinessLayer
         public static void share(string username, string fis_nume)
         {
             ManagerFisiere.share(username, fis_nume);
+        }
+
+        public static void remove_access(string fisier)
+        {
+            ManagerFisiere.remove_access(fisier);
         }
 
     }
