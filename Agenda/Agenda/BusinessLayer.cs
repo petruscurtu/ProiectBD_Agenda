@@ -52,6 +52,20 @@ namespace BusinessLayer
             //MessageBox.Show(filename);
         }
 
+        public static void upload_revision(int index, string filename)
+        {
+            DataRow dr = t_fis_externe.Rows[index];
+
+            string cript = dr["Nume_Criptat"].ToString();
+
+            string cript_veche = criptare_fis(filename);
+
+            string path = @".\data\";
+
+            //File.Delete(path + cript);
+            File.Replace(cript_veche,path+ cript, null);
+        }
+
         public static bool download(int index,string filename)
         {
             DataRow dr = t_fis_proprii.Rows[index];
